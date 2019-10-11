@@ -264,17 +264,17 @@ graphviz::${__dirname}/fixtures/nodes.dot[format=png]`, {extension_registry: reg
       })
     })
   }
-  
-  describe('antora integration', () => { 
+
+  describe('antora integration', () => {
     it('should ignore an image being added a second time', () => {
       const antoraContentCatalog = new ContentCatalog()
       const registry = asciidoctorPlantuml.register(asciidoctor.Extensions.create(), {
         contentCatalog: antoraContentCatalog,
         file: {
           src: {
-            component: "test",
-            version: "1",
-            module: "testmodule"
+            component: 'test',
+            version: '1',
+            module: 'testmodule'
           }
         }
       })
@@ -282,9 +282,9 @@ graphviz::${__dirname}/fixtures/nodes.dot[format=png]`, {extension_registry: reg
       const inputFn = shared.asciidocContent(fixture)
       const input = inputFn([`:plantuml-server-url: ${shared.PLANTUML_REMOTE_URL}`, ':plantuml-fetch-diagram:'])
       asciidoctor.convert(input, {extension_registry: registry})
-      expect(antoraContentCatalog.getFiles().length).toBe(1);
+      expect(antoraContentCatalog.getFiles().length).toBe(1)
       asciidoctor.convert(input, {extension_registry: registry})
-      expect(antoraContentCatalog.getFiles().length).toBe(1);
+      expect(antoraContentCatalog.getFiles().length).toBe(1)
     })
   })
 })
